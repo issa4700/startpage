@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>./startpage.sh</title>
+    <link rel="stylesheet" href="main.pcss">
+    <script defer src="main.js"></script>
+
+    <style>
+        .link-itm {
+            @apply text-gray-400;
+            @apply ml-5;
+            list-style-type: "~ ";
+        }
+        .link-itm:hover {
+            @apply text-gray-50;
+            @apply underline;
+        }
+        .link-itm > a {
+            @apply -ml-1;
+        }
+        body {
+            font-family: 'Consolas', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-800">
+    <div class="min-h-screen flex flex-row items-center justify-center">
+       <div class="flex flex-col md:flex-row items-start max-w-4xl">
+            <!-- Featured Image -->
+            <div class="flex flex-wrap justify-center">
+                <div class="px-4 max-w-md">
+                    <img src="img.png"
+                        alt="..." 
+                        class="max-w-full h-auto align-middle border-none opacity-85" 
+                    />
+                </div>
+            </div>
+            
+            <!-- Right -->
+            <div class="w-full h-full flex flex-col justify-center mx-auto text-white">
+            
+                <!-- Fake commands -->
+                <div class="flex flex-col justify-between mb-4">
+                    <p class="text-green-300 text-3xl">Greetings, <span class="text-white">Issa</span>.</p>
+                    <p class='text-sm'>It is currently <strong id="time"></strong>.</p>
+                </div>
+            
+                <!-- Links -->
+                <div class="flex-grow mb-4 grid grid-cols-1 md:grid-cols-5 gap-4 text-gray-400">
+            
+                    <div>
+                        <ul>
+                            <li class="text-pink-300 font-bold">main <span class="text-gray-400"></span></li>
+                            <li class="link-itm"><a href="https://google.com" rel="noreferrer">google</a></li>
+                            <li class="link-itm"><a href="https://reddit.com" rel="noreferrer">reddit</a></li>
+                            <li class="link-itm"><a href="https://youtube.com" rel="noreferrer">youtube</a></li>
+                        </ul>
+                    </div>
+            
+                    <div>
+                        <ul class="list-none">
+                            <li class="text-yellow-300 font-bold">uni <span class="text-gray-400"></span></li>
+                            <li class="link-itm"><a href="https://minerva.leeds.ac.uk" rel="noreferrer">minerva</a></li>
+                            <li class="link-itm"><a href="https://core.reload.org.uk" rel="noreferrer">reload</a></li>
+                            <li class="link-itm"><a href="https://www.gradcracker.com/" rel="noreferrer">gradcracker</a></li>
+                        </ul>
+                    </div>
+            
+                    <div>
+                        <ul class="list-none">
+                            <li class="text-indigo-300 font-bold">misc <span class="text-gray-400"></span></li>
+                            <li class="link-itm"><a href="https://lghtsail.aws.amazon.com" rel="noreferrer">lightsail</a></li>
+                        </ul>
+                    </div>
+            
+                    <div>
+                        <ul class="list-none">
+                            <li class="text-green-300 font-bold">ocp + ocp-e <span class="text-gray-400"></span></li>
+                            <li class="link-itm"><a href="http://10.1.0.1/" rel="noreferrer">router</a></li>
+                            <li class="link-itm"><a href="http://10.1.0.2/" rel="noreferrer">switch</a></li>
+                            <li class="link-itm"><a href="http://10.1.0.101/" rel="noreferrer">ipmi</a></li>
+                            <li class="link-itm"><a href="http://10.1.0.102/" rel="noreferrer">idrac</a></li>
+                            <li class="text-gray-300">webgui <span class="text-gray-400"></span></li>
+                            <li class="link-itm"><a href="http://10.1.0.9/" rel="noreferrer">freenas</a></li>
+                            <li class="link-itm"><a href="https://10.1.0.7:8006/" rel="noreferrer">pve</a></li>
+                        </ul>
+                    </div>
+            
+                    <div>
+                        <ul class="list-none mb-4">
+                            <li class="text-blue-300 font-bold">homelab <span class="text-gray-400"></span></li>
+                            <li class="link-itm"><a href="https://10.1.47.2:8006/" rel="noreferrer">pve</a></li>
+                            <li class="link-itm"><a href="https://10.2.0.5:8443/manage" rel="noreferrer">unifi</a></li>
+                        </ul>
+                        <ul class="list-none">
+                            <li class="font-semibold text-blue-200">local <span class="text-gray-400"></span></li>
+                            <li class="link-itm"><a href="http://192.168.1.1" rel="noreferrer">er-x</a></li>
+                            <li class="link-itm"><a href="http://192.168.1.2" rel="noreferrer">wifi ap</a></li>
+                        </ul>
+                    </div>
+            
+                </div>
+            
+                <!-- Search Bar -->
+                <div class="flex flex-row justify-between items-center">
+                    <p class="text-gray-200">
+                        <span class="text-blue-400">~</span>$
+                    </p>
+                    <form action="https://duckduckgo.com/" method="GET" class="w-full">
+                        <input autofocus name="q" type="search" placeholder="Insert command..." autocomplete="off"
+                            class="w-full pl-2 text-white bg-gray-800 focus:outline-none focus:text-white">
+                    </form>
+                </div>
+
+            </div>
+       </div>
+    </div>
+    <script>
+        window.onload = displayClock();
+        function displayClock() {
+            let date = new Date;
+            let time = date.toLocaleTimeString().split(":");
+            document.getElementById("time").innerHTML = time[0] + ":" + time[1];
+            setTimeout(displayClock, 10000);
+        }
+    </script>
+</body>
+
+</html>
